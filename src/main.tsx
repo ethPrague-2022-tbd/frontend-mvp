@@ -3,8 +3,8 @@ import "./index.css";
 import App from "./App";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import UserProfile from "./components/UserProfile";
-import Home from "./components/Home";
+import UserProfile from "./Pages/UserProfile";
+import Home from "./Pages/Home";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
