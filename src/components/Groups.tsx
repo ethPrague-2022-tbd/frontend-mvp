@@ -1,7 +1,12 @@
-const Groups = () => {
+import { FaPlus } from "react-icons/fa";
+
+const Groups = ({ home }: { home?: boolean }) => {
   return (
     <div className="w-full text-white flex flex-col gap-2 ">
-      <p>Groups</p>
+      <div className="flex items-center justify-between">
+        <p>Groups</p>
+        {home && <FaPlus />}
+      </div>
       <div className="p-4 border gap-2 rounded-lg flex w-full">
         <img
           src="https://miro.medium.com/max/3150/2*X_8LYIcePYE1DMhi8vcHFw.png"
