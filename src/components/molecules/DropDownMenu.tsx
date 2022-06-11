@@ -43,7 +43,10 @@ export const DropDownMenu = (props: Props) => {
               return (
                 <a
                   key={item.label}
-                  onClick={item.action}
+                  onClick={() => {
+                    item.action?.();
+                    setIsOpen(false);
+                  }}
                   className={`font-poppins' flex cursor-pointer items-center justify-between px-8 py-8 text-left font-normal text-white-800 hover:bg-gray-500 md:py-4`}
                   role="menuitem"
                 >

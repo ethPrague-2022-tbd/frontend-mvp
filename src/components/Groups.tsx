@@ -21,7 +21,7 @@ const Groups = ({ home }: { home?: boolean }) => {
         </div>
       </div>
 
-      <div className="p-4 border gap-2 rounded-lg flex w-full">
+      <div className="p-4 border gap-2 rounded-lg flex w-full items-center">
         <img
           src="https://daohaus.club/img/logo.png"
           alt="Daohaus"

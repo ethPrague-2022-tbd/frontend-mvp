@@ -17,7 +17,7 @@ export function WalletConnector() {
   });
 
   useEffect(() => {
-    if (isConnected) navigate("/my-feed");
+    navigate(isConnected ? "/my-feed" : "");
   }, [isConnected]);
 
   if (account) {
