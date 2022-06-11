@@ -1,11 +1,11 @@
-import { FaPlus } from "react-icons/fa";
+import { FaPen, FaPlus } from "react-icons/fa";
 
-const Groups = ({ home }: { home?: boolean }) => {
+const Groups = ({ home, editMode }: { home?: boolean; editMode?: boolean }) => {
   return (
     <div className="w-full text-white flex flex-col gap-2 ">
       <div className="flex items-center justify-between">
         <p>Groups</p>
-        {home && <FaPlus />}
+        {home && editMode ? <FaPen size={14} /> : <FaPlus />}
       </div>
       <div className="p-4 border gap-2 rounded-lg flex w-full">
         <img

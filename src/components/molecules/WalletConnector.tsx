@@ -16,16 +16,17 @@ export function WalletConnector() {
     ddmItem.push({ label: connector.name, action: () => connect(connector) });
   });
 
-  useEffect(() => {
-    navigate(isConnected ? "/my-feed" : "");
-  }, [isConnected]);
+  // useEffect(() => {
+  //   navigate(isConnected ? "/my-feed" : "");
+  // }, [isConnected]);
 
   if (account) {
     return (
       <DropDownMenu
         items={[
           {
-            label: "Customize",
+            label: "Settings",
+            action: () => navigate("/settings"),
           },
           {
             label: "Logout",

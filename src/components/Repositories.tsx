@@ -1,7 +1,12 @@
-const Repositories = () => {
+import { FaPen } from "react-icons/fa";
+
+const Repositories = ({ editMode }: { editMode?: boolean }) => {
   return (
     <div className="flex flex-col gap-2 h-full text-white">
-      <p>Repositories</p>
+      <div className="flex justify-between items-center">
+        <p>Repositories</p>
+        {editMode && <FaPen size={14} />}
+      </div>
       <div className="h-full w-full flex flex-col gap-2  text-white">
         <div className="p-4 border rounded-lg cursor-pointer">
           <p className="font-medium">vbuterin/ethprague-mvp</p>
