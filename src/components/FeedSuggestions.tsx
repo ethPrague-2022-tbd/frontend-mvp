@@ -1,9 +1,12 @@
-import { FaPlus } from "react-icons/fa";
+import { FaPen, FaPlus } from "react-icons/fa";
 
-const FeedSuggestions = () => {
+const FeedSuggestions = ({ editMode }: { editMode?: boolean }) => {
   return (
     <div className="flex flex-col gap-2">
-      <p>Add to your feed</p>
+      <div className="flex justify-between items-center">
+        <p>Add to your feed</p>
+        {editMode && <FaPen size={14} />}
+      </div>
       <div className="p-4 border gap-2 rounded-lg flex w-full justify-between">
         <img
           src="https://pbs.twimg.com/profile_images/1529956155937759233/Nyn1HZWF_400x400.jpg"
