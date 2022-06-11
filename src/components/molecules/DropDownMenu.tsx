@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { SecondaryButton } from '../atoms/Buttons';
+import { useState } from "react";
 
 interface Props {
   label?: string;
@@ -20,11 +19,13 @@ export interface DDMItem {
 export const DropDownMenu = (props: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className={`relative inline-block text-left ${props.className}`}>
+    <div
+      className={`relative inline-block text-left w-full ${props.className}`}
+    >
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`flex w-full items-center justify-center px-9 ${
-          props.transparentBackground ? 'bg-transparent' : ''
+        className={`flex w-full items-center justify-center ${
+          props.transparentBackground ? "bg-transparent" : ""
         }`}
       >
         {props.label}
@@ -45,7 +46,7 @@ export const DropDownMenu = (props: Props) => {
       {isOpen && (
         <div className="absolute right-0 z-20 mt-2 w-full origin-top-right overflow-hidden rounded-2xl bg-black shadow-lg ring-1 ring-black ring-opacity-5">
           <div
-            className={'divide-y divide-gray-100 py-1'}
+            className={"divide-y divide-gray-100 py-1"}
             role="menu"
             aria-orientation="vertical"
             aria-labelledby="options-menu"
