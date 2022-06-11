@@ -21,7 +21,7 @@ export const DropDownMenu = (props: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className={`relative inline-block text-left ${props.className}`}>
-      <SecondaryButton
+      <button
         onClick={() => setIsOpen(!isOpen)}
         className={`flex w-full items-center justify-center px-9 ${
           props.transparentBackground ? 'bg-transparent' : ''
@@ -40,10 +40,10 @@ export const DropDownMenu = (props: Props) => {
             <path d="M1408 704q0 26-19 45l-448 448q-19 19-45 19t-45-19l-448-448q-19-19-19-45t19-45 45-19h896q26 0 45 19t19 45z" />
           </svg>
         )}
-      </SecondaryButton>
+      </button>
 
       {isOpen && (
-        <div className="absolute right-0 z-20 mt-2 w-full origin-top-right overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-black ring-opacity-5">
+        <div className="absolute right-0 z-20 mt-2 w-full origin-top-right overflow-hidden rounded-2xl bg-black shadow-lg ring-1 ring-black ring-opacity-5">
           <div
             className={'divide-y divide-gray-100 py-1'}
             role="menu"
@@ -55,7 +55,7 @@ export const DropDownMenu = (props: Props) => {
                 <a
                   key={item.label}
                   onClick={item.action}
-                  className={`font-poppins' flex cursor-pointer items-center justify-between px-8 py-8 text-left font-normal text-zinc-800 hover:bg-zinc-100 md:py-4`}
+                  className={`font-poppins' flex cursor-pointer items-center justify-between px-8 py-8 text-left font-normal text-white-800 hover:bg-gray-500 md:py-4`}
                   role="menuitem"
                 >
                   {item.label}

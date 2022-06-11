@@ -26,7 +26,15 @@ export function WalletConnector() {
             },
           },
         ]}
-        label={ensName ? `${ensName} (${account.address})` : account.address}
+        label={
+          ensName 
+            ? `${ensName} (${account.address?.substring(0, 5)
+              + '...'
+              + account.address?.substring(account.address?.length -3)})` 
+            : account.address?.substring(0, 5)
+              + '...'
+              + account.address?.substring(account.address?.length -3)
+        }
       ></DropDownMenu>
     );
   } else {
