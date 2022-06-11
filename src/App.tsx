@@ -1,12 +1,15 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import Topbar from "./components/Topbar";
-import UserProfile from "./components/UserProfile";
+import { Provider } from 'wagmi';
+import { connectors } from './connectors';
 
 const App: React.FC = () => (
   <div className=" h-screen">
-    <Topbar />
-    <Outlet />
+    <Provider autoConnect connectors={connectors}>
+      <Topbar />
+      <Outlet />
+    </Provider>
   </div>
 );
 

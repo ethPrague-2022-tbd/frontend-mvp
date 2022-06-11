@@ -1,5 +1,6 @@
 import { FaCog } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { WalletConnector } from "./molecules/WalletConnector";
 
 const Topbar = () => {
   return (
@@ -9,9 +10,10 @@ const Topbar = () => {
       </Link>
       <input type="text" placeholder="search" className="p-2 w-64 text-black" />
       <div className="flex">
-        <button className="px-3 py-2 flex items-center text-white border border-white">
-          Connect wallet
-        </button>
+        <div className="px-3 py-2 flex items-center text-white border border-white">
+          <WalletConnector />
+          {/* Connect wallet */}
+        </div>
         <div className="px-3 py-2 flex items-center">
           <FaCog size={22} />
         </div>
