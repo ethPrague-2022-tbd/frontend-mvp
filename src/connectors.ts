@@ -1,32 +1,43 @@
-import { chain, defaultChains } from 'wagmi';
-import { InjectedConnector } from 'wagmi/connectors/injected';
-import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
-import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet';
+import { WagmiConfig, createClient, defaultChains, configureChains } from 'wagmi'
 
-const infuraId = process.env.NEXT_PUBLIC_INFURA_ID;
+import { alchemyProvider } from 'wagmi/providers/alchemy'
+import { publicProvider } from 'wagmi/providers/public'
 
-const chains = defaultChains;
+import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet'
+import { InjectedConnector } from 'wagmi/connectors/injected'
+import { MetaMaskConnector } from 'wagmi/connectors/metaMask'
+import { WalletConnectConnector } from 'wagmi/connectors/walletConnect'
 
-export const connectors = ({ chainId }: any) => {
-  const rpcUrl =
-    chains.find((x) => x.id === chainId)?.rpcUrls?.[0] ??
-    chain.mainnet.rpcUrls[0];
-  return [
-    new InjectedConnector({
+// const alchemyId = process.env.ALCHEMY_ID;
+
+const { chains, provider, webSocketProvider } = configureChains(defaultChains, [
+  publicProvider(),
+])
+
+export const client = createClient({
+  autoConnect: true,
+  connectors: [
+    new MetaMaskConnector({ chains }),
+    new CoinbaseWalletConnector({
       chains,
-      options: { shimDisconnect: true },
+      options: {
+        appName: 'wagmi',
+      },
     }),
     new WalletConnectConnector({
+      chains,
       options: {
-        infuraId,
         qrcode: true,
       },
     }),
-    new CoinbaseWalletConnector({
+    new InjectedConnector({
+      chains,
       options: {
-        appName: 'web3hunt',
-        jsonRpcUrl: `${rpcUrl}/${infuraId}`,
+        name: 'Injected',
+        shimDisconnect: true,
       },
     }),
-  ];
-};
+  ],
+  provider,
+  webSocketProvider,
+})

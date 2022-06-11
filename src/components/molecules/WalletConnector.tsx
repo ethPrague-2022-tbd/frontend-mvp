@@ -1,39 +1,32 @@
 import React from 'react';
-import { useAccount, useConnect } from 'wagmi';
+import { useAccount, useConnect, useDisconnect, useEnsName } from 'wagmi';
 import { DDMItem, DropDownMenu } from './DropDownMenu';
 
 export function WalletConnector() {
-  const [{ data: accountData }, disconnect] = useAccount({
-    fetchEns: false,
-  });
-  const [{ data: connectData, error }, connect] = useConnect();
-
+  const { data: account } = useAccount()
+  const { connect, connectors, error, isConnecting, pendingConnector } =
+  useConnect()
+  const { data: ensName } = useEnsName({ address: account?.address })
+  const { disconnect } = useDisconnect()
 
   let ddmItem: DDMItem[] = [];
 
-  connectData.connectors.forEach((connector) => {
+  connectors.forEach((connector) => {
     ddmItem.push({ label: connector.name, action: () => connect(connector) });
   });
 
-  if (accountData) {
+  if (account) {
     return (
       <DropDownMenu
         items={[
           {
             label: 'logout',
             action: async () => {
-              await fetch('/api/logout');
               disconnect();
             },
           },
         ]}
-        label={
-          accountData.ens?.name
-            ? `${accountData.ens?.name}`
-            : accountData.address.substring(0, 5) +
-              '...' +
-              accountData.address.substring(accountData.address.length - 3)
-        }
+        label={ensName ? `${ensName} (${account.address})` : account.address}
       ></DropDownMenu>
     );
   } else {
