@@ -1,11 +1,14 @@
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAccount, useConnect, useDisconnect, useEnsName } from "wagmi";
 import { DDMItem, DropDownMenu } from "./DropDownMenu";
 
 export function WalletConnector() {
   const { data: account } = useAccount();
-  const { connect, connectors } = useConnect();
+  const { connect, connectors, isConnected } = useConnect();
   const { data: ensName } = useEnsName({ address: account?.address });
   const { disconnect } = useDisconnect();
+  const navigate = useNavigate();
 
   let ddmItem: DDMItem[] = [];
 
@@ -13,12 +16,19 @@ export function WalletConnector() {
     ddmItem.push({ label: connector.name, action: () => connect(connector) });
   });
 
+  useEffect(() => {
+    if (isConnected) navigate("/my-feed");
+  }, [isConnected]);
+
   if (account) {
     return (
       <DropDownMenu
         items={[
           {
-            label: "logout",
+            label: "Customize",
+          },
+          {
+            label: "Logout",
             action: async () => {
               disconnect();
             },
@@ -31,7 +41,7 @@ export function WalletConnector() {
                 "..." +
                 account.address?.substring(account.address?.length - 3)
               })`
-            : account.address?.substring(0, 5) +
+            : account.address?.substring(0, 8) +
               "..." +
               account.address?.substring(account.address?.length - 3)
         }
