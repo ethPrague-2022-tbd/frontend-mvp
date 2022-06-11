@@ -1,4 +1,5 @@
 import profilePic from "../assets/profile-pic.jpeg";
+import Badges from "../components/Badges";
 import Groups from "../components/Groups";
 import Repositories from "../components/Repositories";
 import SocialMedia from "../components/SocialMedia";
@@ -25,7 +26,10 @@ const UserProfile = () => {
       <div className="w-full pt-4 pr-4">
         <div className="flex gap-4 pt-4">
           <TwitterFeed />
-          <Repositories />
+          <div className="flex flex-col gap-4">
+            <Badges />
+            <Repositories />
+          </div>
         </div>
       </div>
     </div>
