@@ -23,6 +23,20 @@ const Groups = ({ home }: { home?: boolean }) => {
 
       <div className="p-4 border gap-2 rounded-lg flex w-full">
         <img
+          src="https://daohaus.club/img/logo.png"
+          alt="Daohaus"
+          className="w-16 h-fit"
+        />
+        <div className="flex flex-col">
+          <p className="font-medium">Daohaus</p>
+          <p className="text-slate-300 text-sm">
+            Unlock the next tier in community cooperation
+          </p>
+        </div>
+      </div>
+
+      <div className="p-4 border gap-2 rounded-lg flex w-full">
+        <img
           src="https://images.squarespace-cdn.com/content/v1/5c598e4ebfba3e5984563a0e/1565305053540-E97I3TTHCYHFU0DMW342/meta_chill+copy.png"
           alt="Metacartel"
           className="w-16"
