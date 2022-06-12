@@ -7,6 +7,7 @@ import UserProfile from "./Pages/UserProfile";
 import Home from "./Pages/Home";
 import MyFeed from "./Pages/MyFeed";
 import Settings from "./Pages/Settings";
+import UserProfile2 from "./Pages/UserProfile2";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -15,6 +16,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         <Route path="/" element={<App />}>
           <Route path="/" element={<Home />} />
           <Route path="user" element={<UserProfile />} />
+          <Route path="elon" element={<UserProfile2 />} />
           <Route path="my-feed" element={<MyFeed />}>
             <Route path="edit" element={<MyFeed />} />
           </Route>

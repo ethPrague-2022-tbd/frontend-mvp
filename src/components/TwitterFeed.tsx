@@ -9,11 +9,15 @@ const TwitterFeed = ({ editMode }: { editMode?: boolean }) => {
         <p>Twitter</p>
         {editMode && <FaPen size={14} />}
       </div>
-      <img src={elonTwit} alt="twit" className="w-full h-auto" />
+      <Link to="/elon">
+        <img src={elonTwit} alt="twit" className="w-full h-auto" />
+      </Link>
       <Link to="/user">
         <img src={twit} alt="twit" className="w-full h-auto" />
       </Link>
-      <img src={elonTwit} alt="twit" className="w-full h-auto" />
+      <Link to="/elon">
+        <img src={elonTwit} alt="twit" className="w-full h-auto" />
+      </Link>
       <Link to="/user">
         <img src={twit} alt="twit" className="w-full h-auto" />
       </Link>
